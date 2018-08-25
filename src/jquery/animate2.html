@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>hover弹开</title>
+  <script src="../jquery-3.0.0.js"></script>
+  <style>
+    *{
+      /*margin:auto;*/
+    }
+    body{
+      margin: 0;
+      display:block;
+    }
+    .main{
+      width:600px;
+      height:300px;
+      background-color: red;
+      margin:auto;
+    }
+    .pan1,.pan2,.pan3{
+      width:200px;
+      height:300px;
+      float: left;
+    }
+    .pan1 .text1  ,.pan2 .text1   ,.pan3 .text1{  text-align: center;  top: 30%;  width: 200px;  position: relative;  transition:.5s;  }
+    .pan1 .text1_2,.pan2 .text1_2 ,.pan3 .text1_2{  text-align: center;  top: 30%;  width: 200px;  opacity:0.0;  position: relative;  transition:.5s;  }
+    .pan1 .text2  ,.pan2 .text2   ,.pan3 .text2{  text-align: center;  width: 200px;  top: 40%;  position: relative;  transition:.5s;  }
+    .pan1 .text2_2,.pan2 .text2_2 ,.pan3 .text2_2{  text-align: center;  width: 200px;  top: 10%;  position: relative;  transition:.3s;  }
+
+  </style>
+</head>
+<body>
+  <div class="main">
+    <div class="pan1">
+      <div class="text1">我是标题</div>
+      <div class="text2">我是内容</div>
+    </div>
+    <div class="pan2">
+      <div class="text1">我是标题2</div>
+      <div class="text2">我是内容2</div>
+    </div>
+    <div class="pan3">
+      <div class="text1">我是标题3</div>
+      <div class="text2">我是内容3</div>
+    </div>
+
+  </div>
+<script>
+
+  $(function () {
+    $(".pan1,.pan2,.pan3").mouseenter(function () {
+      $(this).find(".text1").attr("class","text1_2");
+      $(this).find(".text2").attr("class","text2_2");
+    });
+    $(".pan1,.pan2,.pan3").mouseleave(function () {
+      $(this).find(".text1_2").attr("class","text1");
+      $(this).find(".text2_2").attr("class","text2");
+    })
+  })
+
+</script>
+</body>
+</html>

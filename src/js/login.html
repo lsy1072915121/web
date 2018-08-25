@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>用户登录</title>
+  <script language="JavaScript" src="node.js"></script>
+  <script language="JavaScript">
+
+    function login() {
+      var name = "javascript", passwd = "123456";
+      var uname = form.username.value;
+      var upasswd = form.passwd.value;
+      if (uname.trim().length == 0 || upasswd.trim().length == 0) {
+        alert("用户名或者密码不可以为空！！！");
+      } else if (uname == name && upasswd == passwd) {
+        alert("登录成功");
+      } else {
+        alert("用户名或者密码错误！");
+      }
+    }
+  </script>
+</head>
+<body>
+<center>
+  <form name="form" action="" method="post">
+    用户名:<input type="text" name="username"/><br>
+    密码：<input type="password" name="passwd"/><br>
+    <input type="submit" value="登录" onclick="login()">
+  </form>
+</center>
+</body>
+</html>
