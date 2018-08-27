@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JS语法</title>
+  <script src="../jquery-3.0.0.js"></script>
+</head>
+<body>
+
+<script>
+
+  $(function () {
+
+    var string = 16 + 'abc';
+    // var strng2 = null;    //undefine
+    string3 = "123";      //没有使用 var 声明，可自动配置全局属性（window）
+    console.log(string);
+    console.log(string3);
+    // console.log(string2); //undefine
+
+    person.show();
+
+  });
+
+  //js对象
+  var person = {
+    name:"liushiyao",
+    age:12,
+    //对象方法：show()作为函数调用；show作为成员变量返回函数声明
+    show:function () {
+      console.log("name:"+this.name+" age:"+this.age);
+    }
+  }
+
+</script>
+
+</body>
+</html>
