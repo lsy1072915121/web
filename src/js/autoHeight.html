@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="../jquery-3.0.0.js"></script>
+  <script src="../vue/vue.js"></script>
+
+</head>
+<body>
+
+
+<div id="main" style="width: 500px;height: 300px;">
+
+  <textarea id="text" readonly="readonly"  style="overflow:hidden; width: 100px;height: 16px;resize: none">{{ autoHeight }}</textarea>
+  <input v-model="message"/>
+
+</div>
+
+<script>
+
+  $(function () {
+    var vm = new Vue({
+
+      el:"#main",
+      data:{
+        message:""
+      },
+      computed:{
+        autoHeight:function () {
+          var height = $("#text").height();
+          var  size = this.message.length;
+          var num = parseInt(size/13)*16 + 16;
+          $("#text").css("height",num);
+          console.log("height:"+height);
+          console.log("size:"+size);
+          return this.message;
+        }
+      }
+
+
+    })
+  })
+
+
+</script>
+
+</body>
+</html>
