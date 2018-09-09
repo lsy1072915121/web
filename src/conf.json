@@ -1,0 +1,19 @@
+{
+  "fileList":[
+    {
+      "type":"css",
+      "name":"標題",
+      "path":"//json"
+    },
+    {
+      "type":"js",
+      "name":"登录检验",
+      "path":"./js/login.html"
+    },
+    {
+      "type":"css",
+      "name":"標題3",
+      "path":"//json"
+    }
+  ]
+}

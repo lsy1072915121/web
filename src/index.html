@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>目录索引</title>
+  <script src="./jquery-3.0.0.js"></script>
+  <script src="./vue.js"></script>
+  <style>
+    table {
+      width: 100%;
+      text-align: center;
+      border: 1px solid #000000;
+    }
+
+    tb {
+      border: 1px solid #000000;
+    }
+
+    .main {
+      position: relative;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: 800px;
+      height: 600px;
+      margin: auto;
+    }
+  </style>
+</head>
+<body>
+<div id="main" class="main" >
+  <table-list :list="fileList"></table-list>
+</div>
+<script>
+
+  var tableList = {
+    props:['list'],
+    template:"<table class=''>\n"
+        + "    <tr>\n"
+        + "      <td>标号</td>\n"
+        + "      <td>标题</td>\n"
+        + "      <td>索引</td>\n"
+        + "    </tr>\n"
+        + "    <tr v-for='(value,index) in list'  >\n"
+        + "      <td>{{index}}</td>\n"
+        + "      <td>{{value.name}}</td>\n"
+        + "      <td><a :href='value.path'>{{value.path}}</a></td>\n"
+        + "    </tr>\n"
+        + "  </table>"
+  }
+  var vm = new Vue({
+    el: "#main",
+    data: {
+      fileList:[{}]
+    },
+    beforeCreate: function () {
+      $.ajax({
+      url: "./conf.json",
+      data: "",
+      type: "post",
+      error: function () {
+
+      },
+      success: function (result) {
+        vm.fileList = result.fileList;
+      }
+      });
+    },
+    components:{
+      "table-list":tableList
+    }
+  });
+
+
+</script>
+</body>
+</html>
