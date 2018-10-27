@@ -29,6 +29,12 @@
       "name":"子组件属性传递",
       "point":"父组件监听子组件的数据变化",
       "path":"./vue/childPropToFather.html"
-    }
+    },
+    {
+      "type":"js",
+      "name":"js获取url参数",
+      "point":"登录检验",
+      "path":"./js/urlParam.html"
+    },
   ]
 }

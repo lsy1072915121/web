@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Class绑定</title>
+  <script src="../vue.js"></script>
+  <style>
+
+    .active{
+      background:#123456;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div id="main">
+    <button :class="{active:isActive}" @click="isActive = !isActive">按钮</button>
+  </div>
+
+</body>
+<script>
+
+  var vm;
+
+  vm = new Vue({
+    el:"#main",
+    data:{
+      isActive:true
+    },
+  })
+
+
+
+</script>
+
+
+</html>
