@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>子组件属性传递</title>
+  <script src="../jquery-3.0.0.js"></script>
+  <script src="../vue.js"></script>
+</head>
+<body>
+  <div id="main">
+    {{total}}
+    <button-add v-on:add-count="addCountHandle"></button-add>
+    <button-add v-on:add-count="addCountHandle"></button-add>
+  </div>
+  
+<script>
+
+  Vue.component("button-add",{
+    data:function(){
+      return{
+       counter:0
+      }
+    },
+    template:"<button v-on:click='add();'>{{counter}}</button>",
+    methods:{
+      add:function () {
+        this.counter +=1;
+        this.$emit("add-count");
+      }
+    }
+  })
+
+
+  new Vue({
+    el:"#main",
+    data:{
+      total :0
+    },
+    methods:{
+      addCountHandle:function () {
+        this.total +=1;
+        console.log("total ++");
+      }
+    }
+
+  })
+
+
+</script>
+</body>
+</html>
