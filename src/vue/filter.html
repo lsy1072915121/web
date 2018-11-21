@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vue过滤器的使用</title>
+  <script src="../jquery-3.0.0.js"></script>
+  <script src="../vue.js"></script>
+  <style>
+    #main{
+      width:300px;
+      height: 100px;
+    }
+    .text{
+      color:#000000;
+      font-size: 22px;
+    }
+  </style>
+</head>
+<body>
+<div id="main">
+  <input v-model="message">
+  <div class="text">{{message|wordUp}}</div>
+</div>
+</body>
+<script>
+  var vue = new Vue({
+    el :"#main",
+    data:{
+      message:"abcdefg"
+    },
+    filters:{
+      wordUp:function (value) {
+        if (!value)return ""
+        return value.toString().toUpperCase();
+      }
+    }
+  })
+</script>
+</html>

@@ -36,5 +36,11 @@
       "point":"登录检验",
       "path":"./js/urlParam.html"
     },
+    {
+      "type":"js",
+      "name":"vue过滤器的使用",
+      "point":"vue过滤器",
+      "path":"./vue/filter.html"
+    }
   ]
 }
