@@ -10,7 +10,6 @@
   <div id="main">
     {{total}}
     <button-add v-on:add-count="addCountHandle"></button-add>
-    <button-add v-on:add-count="addCountHandle"></button-add>
   </div>
   
 <script>
@@ -24,14 +23,14 @@
     template:"<button v-on:click='add();'>{{counter}}</button>",
     methods:{
       add:function () {
-        this.counter +=1;
         this.$emit("add-count");
+        vm.$emit("add-count2");       //通过$on监听，触发事件的时候必须建立在公共组件上
       }
     }
   })
 
 
-  new Vue({
+  var vm = new Vue({
     el:"#main",
     data:{
       total :0
@@ -39,9 +38,15 @@
     methods:{
       addCountHandle:function () {
         this.total +=1;
-        console.log("total ++");
+        console.log("通过方法监听");
       }
-    }
+    },
+    mounted:function () {
+        this.$on("add-count2",function () {
+          this.total +=1;
+          console.log("通过$on监听");
+        })
+      }
 
   })
 
