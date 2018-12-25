@@ -28,6 +28,20 @@
     .pan1 .text2  ,.pan2 .text2   ,.pan3 .text2{  text-align: center;  width: 200px;  top: 40%;  position: relative;  transition:.5s;  }
     .pan1 .text2_2,.pan2 .text2_2 ,.pan3 .text2_2{  text-align: center;  width: 200px;  top: 10%;  position: relative;  transition:.3s;  }
 
+    .transition-width{
+      width: 100px;
+      height: 100px;
+      background: #6f7180;
+      color: #000;
+      -webkit-transition: width 1s;
+      -moz-transition: width 1s;
+      -ms-transition: width 1s;
+      -o-transition: width 1s;
+      transition: width 1s;
+    }
+    .transition-width:hover{
+      width: 300px;
+    }
   </style>
 </head>
 <body>
@@ -44,8 +58,8 @@
       <div class="text1">我是标题3</div>
       <div class="text2">我是内容3</div>
     </div>
-
   </div>
+  <div class="transition-width">变长</div>
 <script>
 
   $(function () {

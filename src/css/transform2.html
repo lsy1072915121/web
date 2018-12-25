@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>transform的使用</title>
+  <style>
+
+    /*顺时针旋转45°*/
+    .ratate-left{
+      transform: rotate(45deg);
+      height: 100px;
+      width: 100px;
+      background: antiquewhite;
+    }
+    .move-left{
+      height: 100px;
+      width: 100px;
+      -webkit-transform: translateX(30px);
+      -moz-transform: translateX(30px);
+      -ms-transform: translateX(30px);
+      -o-transform: translateX(30px);
+      transform: translateX(30px);
+    }
+    .move-left:hover{
+      height: 100px;
+      width: 100px;
+      -webkit-transform: translateX(60px);
+      -moz-transform: translateX(60px);
+      -ms-transform: translateX(60px);
+      -o-transform: translateX(60px);
+      transform: translateX(60px);
+    }
+
+  </style>
+</head>
+<body>
+  <div class="ratate-left">我是文字</div>
+  <div class="move-left">我是文字2</div>
+
+</body>
+</html>

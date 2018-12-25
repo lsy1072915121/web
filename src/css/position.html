@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Position的使用</title>
+<style>
+
+  .out-div-no-relative{
+    height: 100px;
+    background: #6f7180;
+    color: #000;
+  }
+  .out-div-relative{
+    height: 100px;
+    background: #6f7180;
+    color: #000;
+    position: relative;
+  }
+  .in-div-absolute{
+    position: absolute;
+    left: 10px;
+  }
+
+
+</style>
+</head>
+<body>
+  <div class="out-div-no-relative">
+    <div class="in-div-absolute">我的位置（非relative）</div>
+  </div>
+  <div class="out-div-relative">
+    <div class="in-div-absolute">我的位置（relative）</div>
+  </div>
+<p>要想相对于外层进行绝对布局，外层元素需要设置position:relative</p>
+</body>
+</html>
