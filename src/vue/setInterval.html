@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vue中setInterval的使用</title>
+  <script src="../vue.js"></script>
+</head>
+<body>
+  <div id="main">
+    <button @click="click()">普通函数和箭头函数中的this</button>
+    <button @click="click2()">定时器</button>
+
+
+  </div>
+<script>
+
+  new Vue({
+    el:"#main",
+    data:function () {
+      return{
+        message:"我是vue中的this"
+      }
+    },
+    methods:{
+      click:function () {
+        let timerOne = setInterval(() => {
+         　　　　console.log(this);// vue
+          }, 1000);
+        let timerTwo = setInterval(function () {
+         　　　　console.log(this); // window,因为setInterval()函数是window对象的函数
+        }, 1000);
+      },
+      click2:function () {
+        var that= this;
+        var time = setTimeout(function () {
+          console.log("this:"+that.message);
+        },3000);
+      }
+    }
+
+
+  })
+
+</script>
+</body>
+
+
+
+</html>
