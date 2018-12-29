@@ -1,0 +1,35 @@
+<title><!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Component Setter</title>
+    <script src="../vue.js"></script>
+
+  </head>
+  <body>
+
+  <div id="app">
+    <p>{{msg}}</p>
+  </div>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        msg: 'Hello Vue',
+        _myData: "aaa",
+      }
+    })
+    app.msg = 123
+    console.log(app.msg);
+    console.log(app._myData);           //undefined 不可以通过Vue实例调用
+    console.log(app.$data._myData);     //aaa 以_或者$开头的属性只能通过$data调用
+    console.log(app.$data.msg === app.msg)  //true 实例被创建后，app.$data.msg等价于app.msg
+  </script>
+  </body>
+  </html>
+</title>
+</head>
+<body>
+
+</body>
+</html>

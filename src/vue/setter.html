@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Component Setter</title>
+  <script src="../vue.js"></script>
+
+
+</head>
+<body>
+
+<div id="app">
+  <p>我的名字：{{age}}</p>
+  <button onclick="this.addYear">增加</button>
+  <button @click="delYear">减少</button>
+
+</div>
+<script>
+  var app = new Vue({
+    el: '#app',
+    data: {
+      msg: '我的年龄',
+      birthYear:1995,
+    },
+    methods:{
+      addYear:function () {
+        this.birthYear ++;
+      },
+      delYear:function () {
+        this.birthYear --;
+        this.age --;
+      }
+    },
+    computed:{
+
+      age: {
+        get:function () {
+          return this.birthYear;
+        },
+        set:function (newValue) {
+          console.log("设置新值："+newValue);
+        }
+      }
+    }
+  })
+
+
+</script>
+</body>
+</html>

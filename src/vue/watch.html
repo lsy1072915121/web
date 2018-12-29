@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>$watch的使用</title>
+  <script src="../vue.js"></script>
+
+</head>
+<body>
+
+  <div id="main">
+    <button @click="add()">
+      增加
+    </button>
+    <button @click="del()">
+      减少
+    </button>
+  </div>
+<script>
+
+  var vm = new Vue({
+
+    el:"#main",
+    data:function () {
+      return{
+        cont:0,
+        isAdd:false
+      }
+    },
+    methods:{
+      add:function () {
+        this.cont++;
+        this.isAdd = true;
+      },
+      del:function () {
+        this.isAdd = false;
+      }
+    }
+  })
+  // 监听属性
+  vm.$watch('cont',function (newVal, oldVal) {
+    console.log("newVal"+newVal);
+    console.log("oldVal"+oldVal);
+  })
+  // 监听方法
+  vm.$watch(function () {
+    return this.cont+this.cont;
+  },
+    function (newVal,oldVal) {
+      console.log("newValisAdd"+newVal);
+      console.log("oldValisAdd"+oldVal);
+    }
+  )
+
+
+</script>
+
+</body>
+</html>
