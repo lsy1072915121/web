@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>css持续抖动动画</title>
+  <style>
+    .main{
+      width: 100px;
+      height: 100px;
+      background:#00ffff;
+      /*上下抖动，每4s执行一次，动画执行1s*/
+      -webkit-animation: up-and-down 4s 0s infinite;
+      -o-animation: up-and-down 4s 0s infinite;
+      animation: up-and-down 4s 0s infinite;
+      position: relative;
+    }
+    @keyframes up-and-down {
+      0%,75% {top:0px;}
+      87.5% {top:-20px;}
+      100% {top:0px}
+    }
+
+  </style>
+</head>
+<body>
+  <div class="main"></div>
+</body>
+</html>
