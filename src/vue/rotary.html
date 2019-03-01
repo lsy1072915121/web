@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>大转盘</title>
+  <script src="../vue.js"></script>
+
+  <style>
+
+    .rotary-box {
+      width: 397px;
+      height: 397px;
+      margin: 100px auto;
+      position: relative;
+    }
+    .rotary-box canvas {
+      position: absolute;
+    }
+    #rotary-rotor {
+      background-color: white;
+      border-radius: 100%;
+    }
+    #rotary-rotor {
+      -o-transform: transform 6s;
+      -ms-transform: transform 6s;
+      -moz-transform: transform 6s;
+      -webkit-transform: transform 6s;
+      transition: transform 6s;
+      -o-transform-origin: 50% 50%;
+      -ms-transform-origin: 50% 50%;
+      -moz-transform-origin: 50% 50%;
+      -webkit-transform-origin: 50% 50%;
+      transform-origin: 50% 50%;
+      background:url('../image/cricle.png') -14px -12px no-repeat;
+    }
+
+    .rotary-btn {
+      width: 129px;
+      height: 137px;
+      border-radius: 100%;
+      position: absolute;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      outline: none;
+      z-index: 40;
+      background: url("../image/start.png");
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+    }
+  </style>
+</head>
+<body>
+  <div id="main">
+    <rotary width='397px' height='397px' :info="info" selected="-1" @rotary-result="rotaryResult"></rotary>
+  </div>
+</body>
+<script>
+
+  Vue.component("rotary",{
+    props:["width","height","info","selected"],
+    data:function(){
+      return{
+        rotaryRotorCss:"",
+        isRun:false
+      }
+    },
+    template:"<div class='rotary-box'>"
+        + "      <canvas id='rotary-rotor' :style='rotaryRotorCss' :width='width' :height='width'>浏览器不支持。</canvas>"
+        + "      <button id='rotary-btn' class='rotary-btn' @click='runRotary()' :disabled='isRun'></button>"
+        + "    </div>",
+    methods: {
+      //转盘旋转
+      runRotary:function () {
+        var rotNum=0;
+        var angles=0;
+        var num = this.selected == -1?parseInt(Math.random()*this.info.length):this.selected;
+        rotNum = rotNum + 1;
+        if(num !== null) {
+          angles = 2160 * rotNum + 1800 + 180 / this.info.length * (this.info.length - num);
+        } else {
+          angles = 2160 * rotNum + 1800
+        }
+        var degValue = 'rotate(' + angles + 'deg' + ')';
+        this.rotaryRotorCss = 'transform:'+degValue;
+        this.isRun = true;
+        var that = this;
+        setTimeout(function () {
+          that.$emit("rotary-result",num);
+        }, 6000);
+        // 如果没有获取到获奖数据继续转动
+        if(num === null) {
+          this.runRotary();
+        }
+      },
+    }
+  })
+
+
+  new Vue({
+    el:"#main",
+    data:{
+      info:["七折", "八折", "九折", "谢谢惠顾"],
+    },
+    methods:{
+      rotaryResult:function (result) {
+        console.log("result:"+result);
+      }
+    }
+
+
+
+
+
+  })
+
+
+
+
+</script>
+</html>
