@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>js调用组件</title>
+  <script src="../vue.js"></script>
+  <script src="../jquery-3.0.0.js"></script>
+
+  <style>
+
+  </style>
+</head>
+<body>
+  <div id="main" >
+    <button @click="start()">start</button>
+    <button @click="end()">end</button>
+
+  </div>
+
+</body>
+<script type="text/html" id="messageBox">
+  <transition name="message-fade">
+    <div class="message" v-show="isShow">
+      <p>{{message}}</p>
+    </div>
+  </transition>
+</script>
+<script>
+
+  var messageBox = Vue.extend({
+    name:"messageBox",
+    data:function () {
+      return{
+        message:"",
+        isShow:true,
+      }
+    },
+    template:$("#messageBox").html(),
+    methods:{
+      close:function () {
+        this.isShow = false;
+      }
+    }
+
+  });
+
+  var vm = new Vue({
+    name: 'v-message',
+    el:"#main",
+    data:function () {
+      return {
+      }
+    },
+    methods:{
+      start:function () {
+        this.$messageBox({
+          message:"wqe",
+          isShow:true
+        });
+      },
+      end:function () {
+        this.$messageBox().close();
+      }
+    }
+  })
+  var Constructor = Vue.extend(messageBox);
+  function messageBoxFun(options){
+    if (Vue.prototype.$isServer) return
+    // 创建 constructor 的实例，没有el选项则模板会渲染为文档之外的元素，后面需通过原生api插入到文档中
+    if(typeof options !== 'object'){
+      options = {
+        message: ""
+      }
+      return;
+    }
+    let instance = new Constructor({
+      data: {
+        message: options.message
+      }
+    })
+    //组件需要挂载在dom元素上
+    instance.vm = instance.$mount();
+    debugger
+    document.body.appendChild(instance.vm.$el)
+    console.log(instance.vm.$el)    // 打印的结果是 <!--function (e,n,r,i){return re(t,e,n,r,i,!0)}-->
+    return instance.vm;
+  }
+  Vue.prototype.$messageBox = messageBoxFun;
+
+
+</script>
+</html>
