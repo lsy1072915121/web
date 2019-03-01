@@ -15,9 +15,26 @@
       position: relative;
     }
     @keyframes up-and-down {
-      0%,75% {top:0px;}
-      87.5% {top:-20px;}
-      100% {top:0px}
+      0%,75% {
+        -webkit-transform: translateY(0px);
+        -moz-transform: translateY(0px);
+        -ms-transform: translateY(0px);
+        -o-transform: translateY(0px);
+        transform: translateY(0px);
+      }
+      87.5% {
+        -webkit-transform: translateY(-20px);
+        -moz-transform: translateY(-20px);
+        -ms-transform: translateY(-20px);
+        -o-transform: translateY(-20px);
+        transform: translateY(-20px);}
+      100% {
+        -webkit-transform: translateY(0px);
+        -moz-transform: translateY(0px);
+        -ms-transform: translateY(0px);
+        -o-transform: translateY(0px);
+        transform: translateY(0px);
+      }
     }
 
   </style>
