@@ -41,6 +41,36 @@
       "name":"vue过滤器的使用",
       "point":"vue过滤器",
       "path":"./vue/filter.html"
+    },
+    {
+      "type":"vue",
+      "name":"vue监听watch的使用",
+      "point":"监听属性、监听方法",
+      "path":"./vue/watch.html"
+    },
+    {
+      "type":"vue",
+      "name":"swiper插件的使用",
+      "point":"swiper demo",
+      "path":"./vue/swiperDemo.html"
+    },
+    {
+      "type":"vue",
+      "name":"vue setter的使用",
+      "point":"setter demo",
+      "path":"./vue/setter.html"
+    },
+    {
+      "type":"vue",
+      "name":"Vue中setInterval的使用",
+      "point":"Vue中setInterval的使用",
+      "path":"./vue/setInterval.html"
+    },
+    {
+      "type":"vue",
+      "name":"大转盘组件",
+      "point":"大转盘组件",
+      "path":"./vue/rotary.html"
     }
   ]
 }
